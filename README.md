@@ -1,7 +1,7 @@
-# 5th__sinhhanDStudy
-신한 DS SW 아카데미 5기 개인 실습 모음집
-
-## 📂 WebSocket/Controller
+<h1>5th__sinhhanDStudy</h1>
+신한 DS SW 아카데미 5기 개인 공부&실습 모음집
+<br><br>
+<h2>📂 WebSocket/Controller</h2>
 
 해당 폴더에는 Java Servlet 기반의 실시간 웹 소켓 채팅 예제가 포함되어 있습니다.  
 - JSP와 JavaScript를 이용하여 말풍선 형태의 채팅 UI 구현
@@ -9,7 +9,7 @@
 - `@ServerEndpoint` 기반으로 WebSocket 양방향 통신 처리  
 - 클라이언트 간 브로드캐스트 구조 적용  
 
-### 💬 채팅 UI 미리보기
+<h3>💬 채팅 UI 미리보기</h3>
 
 | 채팅방1 | 채팅방2 | 채팅방3 |
 |----------------|----------------|------------------|
