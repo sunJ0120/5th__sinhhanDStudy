@@ -1,5 +1,5 @@
 <h1>5th__sinhhanDStudy</h1>
-신한 DS SW 아카데미 5기 개인 공부&실습 모음집
+신한 DS SW 아카데미 5기 1회차 개인 공부&실습 모음집
 <br><br>
 <h2>📂 WebSocket/Controller</h2>
 
