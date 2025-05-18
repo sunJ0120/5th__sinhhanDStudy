@@ -1,0 +1,39 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+h1, p {
+    padding: 10px;
+    background-color: #222;
+    color: #fff;
+}
+
+/*
+글꼴이 사용자에게 없다면 깨질 수 있어서 두번째, 세번째 글꼴을 준다.
+*/
+body{
+    font-family: "Jua", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.box{
+    height: 50px;
+    border: solid black;
+    line-height: 50px;
+    width: 100px;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row; /*가로 정렬 */
+    gap : 10px /* 박스 사이의 갭... */
+}
+
+#spacing1 {
+    letter-spacing: 1em;
+}
+
+ul {
+    list-style-image: url('img/eightball.png');
+}
