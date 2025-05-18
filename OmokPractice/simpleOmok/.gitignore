@@ -40,3 +40,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### 일단 비지엠 제외
+webapp/music

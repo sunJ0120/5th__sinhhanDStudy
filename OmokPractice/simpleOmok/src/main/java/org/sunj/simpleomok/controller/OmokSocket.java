@@ -18,6 +18,7 @@ public class OmokSocket {
     private static final Set<Session> allClients = Collections.synchronizedSet(new HashSet<>());
     //클라이언트별로 역할이 있으므로, 역할을 저장하기 위한 매핑도 필요하다.
     private static Map<Session, String> playerRoles = new HashMap<>(); //session → "black", "white", "observer"
+    private static String currentTurn = "black"; // ✅ 흑돌부터 시작
 
     @OnOpen
     public void onOpen(Session session) throws IOException {
@@ -69,7 +70,16 @@ public class OmokSocket {
         int x = recieved.getInt("x");
         int y = recieved.getInt("y");
         String color = recieved.getString("color");
-        //차후 여기서 유효성 검사등을 진행할 수 있으나, 우선은 그냥 두는것만 구현하기로 한다.
+        //수 검사
+        //1. 현재 턴 검사
+        // 🚨 현재 턴 검사
+        if (!color.equals(currentTurn)) {
+            log.warn("잘못된 차례입니다. 현재 턴: {}, 요청한 색상: {}", currentTurn, color);
+            return;
+        }
+
+        // 🎯 다음 턴으로 전환
+        currentTurn = currentTurn.equals("black") ? "white" : "black";
 
         //여기서 잘 들어오는지 확인 필요할듯.
         log.info("돌을 둡니다. 좌표 : ({}, {}), 색상 : {}", x, y, color);
@@ -80,6 +90,7 @@ public class OmokSocket {
         broadcast.put("x", x);
         broadcast.put("y", y);
         broadcast.put("color", color);
+        broadcast.put("nextTurn", currentTurn); // 🔥 다음 턴 전달!
 
         synchronized (allClients) {
             for(Session client : allClients){
