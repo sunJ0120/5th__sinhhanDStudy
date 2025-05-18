@@ -12,11 +12,9 @@
             align-items: center;
             padding-top: 30px;
         }
-
         h2 {
             margin-bottom: 20px;
         }
-
         #chatBox {
             width: 400px;
             height: 350px;
