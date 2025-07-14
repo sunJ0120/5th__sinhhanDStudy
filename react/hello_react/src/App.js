@@ -1,22 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { Fragment } from "react/jsx-runtime";
+import Greet from "./component/Greet";
 
 function App() {
+  const name = "React";
+  const greet = true;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>안녕요~ 이 자리 진짜 덥다</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1 className="a">Hello {name}</h1>
+      <h2 style={{ backgroundColor: "black", color: "white" }}>
+        {greet && <Greet />}
+      </h2>
+    </>
   );
 }
 
