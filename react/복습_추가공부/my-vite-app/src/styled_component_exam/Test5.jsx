@@ -14,7 +14,6 @@ const StyledLink = styled(Link)`
   font-weight: bold;
 `;
 
-// 구조를 보면, Link 이게 className, Unstyled, boring Link 이게 child가 되는 것이다.
 function Test5() {
   return (
     <>
