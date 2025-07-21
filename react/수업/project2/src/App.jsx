@@ -3,7 +3,7 @@ import styled from "styled-components"; //styled-components import
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
-import { useRef, useState, useReducer } from "react";
+import { useRef, useState, useReducer, useCallback } from "react";
 
 //임시 데이터인 mock data를 만든다.
 const mockTodo = [
@@ -38,6 +38,8 @@ const AppMain = styled.div`
   padding: 20px;
   border: 1px solid gray;
   align-items: flex-start;
+  background-color: aliceblue;
+  color: darkcyan;
 `;
 
 //Reducer를 사용하기 위함이다.
@@ -88,20 +90,20 @@ function App() {
 
   //CR"U"D
   //dispatch로 targetId만 전달해서, reducer에서 처리한다.
-  const onUpdate = (targetId) => {
+  const onUpdate = useCallback((targetId) => {
     dispatch({
       type: "UPDATE",
       targetId,
     });
-  };
+  }, []);
 
   //CRU"D"
-  const onDelete = (targetId) => {
+  const onDelete = useCallback((targetId) => {
     dispatch({
       type: "DELETE",
       targetId,
     });
-  };
+  }, []);
 
   return (
     <>

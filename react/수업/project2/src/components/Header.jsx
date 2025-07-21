@@ -8,17 +8,18 @@ const Wrapper = styled.div`
 `;
 const HeaderMonth = styled.h1`
   margin: 0;
+  color: cadetblue;
 `;
 
 function Header() {
   return (
     <>
       <Wrapper>
-        <h3>오늘은 🗓️</h3>
+        <h3>오늘의 날짜는요~ 🗓️</h3>
         <HeaderMonth>{new Date().toDateString()}</HeaderMonth>
       </Wrapper>
     </>
   );
 }
 
-export default Header;
+export default React.memo(Header); //memo로 감싸서 최적화한다.

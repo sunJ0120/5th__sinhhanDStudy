@@ -11,10 +11,11 @@ const Input = styled.input`
   flex: 1;
   box-sizing: border-box;
   border: 1px solid, rgb(220, 220, 220);
+  background-color: lightgray;
 
   &:focus {
     outline: none;
-    border: 1px solid #1f93ff;
+    border-bottom: 1pt solid cadetblue;
   }
 `;
 
@@ -22,7 +23,7 @@ const Button = styled.button`
   cursor: pointer;
   width: 80px;
   border: none;
-  background-color: #1f93ff;
+  background-color: cadetblue;
   color: white;
   border-radius: 5px;
 `;
