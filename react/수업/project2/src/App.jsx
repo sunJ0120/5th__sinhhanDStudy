@@ -3,9 +3,9 @@ import styled from "styled-components"; //styled-components import
 import Header from "./components/Header";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
-import { useRef, useState } from "react";
+import { useRef, useState, useReducer } from "react";
 
-//임시 데이터인 mock dataf를 만든다.
+//임시 데이터인 mock data를 만든다.
 const mockTodo = [
   {
     id: 0,
@@ -40,44 +40,67 @@ const AppMain = styled.div`
   align-items: flex-start;
 `;
 
+//Reducer를 사용하기 위함이다.
+//switch를 이용해서, action 안에 있는 타입이 어떤 타입인지를 확인한다.
+function reducer(state, action) {
+  switch (action.type) {
+    case "CREATE": {
+      return [action.newItem, ...state];
+    }
+    case "UPDATE": {
+      return state.map((it) =>
+        it.id === action.targetId
+          ? {
+              ...it,
+              isDone: !it.isDone,
+            }
+          : it
+      );
+    }
+    //즉, 삭제 버튼을 누르지 않은 targetId가 아닌 것만 내보낸다는 의미이다.
+    case "DELETE": {
+      return state.filter((it) => it.id !== action.targetId);
+    }
+    default:
+      return state;
+  }
+}
+
 // 함수를 todoEditor한테 넘겨준다. ->
 function App() {
-  const [todo, setTodo] = useState(mockTodo);
+  const [todo, dispatch] = useReducer(reducer, mockTodo);
+  // const [todo, setTodo] = useState(mockTodo);
   const idRef = useRef(3);
 
   //"C"RUD
   const onCreate = (content) => {
-    const newItem = {
-      id: idRef.current,
-      content,
-      isDone: false,
-      createDate: new Date(Date.now()).toLocaleDateString(),
-    };
-    setTodo([newItem, ...todo]); //newItem을 todo 배열 아래 넣는다.
+    dispatch({
+      type: "CREATE",
+      newItem: {
+        id: idRef.current,
+        content,
+        isDone: false,
+        createDate: new Date(Date.now()).toLocaleDateString(),
+      },
+    });
     idRef.current += 1;
   };
 
   //CR"U"D
+  //dispatch로 targetId만 전달해서, reducer에서 처리한다.
   const onUpdate = (targetId) => {
-    setTodo(
-      todo.map((it) => {
-        //클릭한 체크박스에 해당하는 아이디일 경우
-        if (it.id === targetId) {
-          //같은 것일 경우, 그것에 해당하는 것만 상태 변경하고 나머지 전부 return
-          return {
-            ...it,
-            isDone: !it.isDone,
-          };
-        } else {
-          return it;
-        }
-      })
-    );
+    dispatch({
+      type: "UPDATE",
+      targetId,
+    });
   };
 
   //CRU"D"
   const onDelete = (targetId) => {
-    setTodo(todo.filter((it) => it.id !== targetId));
+    dispatch({
+      type: "DELETE",
+      targetId,
+    });
   };
 
   return (
