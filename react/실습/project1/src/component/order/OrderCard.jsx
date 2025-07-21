@@ -58,11 +58,12 @@ const ImageWrapper = styled.div`
   height: 90px;
 
   img {
-    display: block; /* inline-whitespace 제거 */
-    width: 100%; /* 컨테이너 가로에 맞추기 */
-    height: 100%; /* 컨테이너 세로에 맞추기 */
-    object-fit: cover; /* 비율 유지하면서 자르기 */
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
+
 `;
 
 const OrderInfoWrapper = styled.div`
