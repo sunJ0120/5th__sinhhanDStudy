@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.zerock.mreview.repository.MemberRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-08-21T23:51:49.141Z" hostname="DESKTOP-MFLRRK3" time="0.369">
+  <properties/>
+  <testcase name="testDeleteMember()" classname="org.zerock.mreview.repository.MemberRepositoryTests" time="0.369"/>
+  <system-out><![CDATA[08:51:46.141 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.zerock.mreview.repository.MemberRepositoryTests]: MemberRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:51:46.207 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.zerock.mreview.MreviewApplication for test class org.zerock.mreview.repository.MemberRepositoryTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.2)
+
+2025-08-22T08:51:46.386+09:00  INFO 31136 --- [mreview] [    Test worker] o.z.m.repository.MemberRepositoryTests   : Starting MemberRepositoryTests using Java 17.0.14 with PID 31136 (started by fzaca in D:\java\workspace_boot\mreview)
+2025-08-22T08:51:46.387+09:00  INFO 31136 --- [mreview] [    Test worker] o.z.m.repository.MemberRepositoryTests   : No active profile set, falling back to 1 default profile: "default"
+2025-08-22T08:51:46.717+09:00  INFO 31136 --- [mreview] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-22T08:51:46.757+09:00  INFO 31136 --- [mreview] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 4 JPA repository interfaces.
+2025-08-22T08:51:47.055+09:00  INFO 31136 --- [mreview] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-22T08:51:47.084+09:00  INFO 31136 --- [mreview] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-08-22T08:51:47.105+09:00  INFO 31136 --- [mreview] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-22T08:51:47.272+09:00  INFO 31136 --- [mreview] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-22T08:51:47.288+09:00  INFO 31136 --- [mreview] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-22T08:51:47.346+09:00  INFO 31136 --- [mreview] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.mariadb.jdbc.Connection@26d73519
+2025-08-22T08:51:47.347+09:00  INFO 31136 --- [mreview] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-22T08:51:47.825+09:00  INFO 31136 --- [mreview] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-22T08:51:47.865+09:00  INFO 31136 --- [mreview] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-22T08:51:48.011+09:00  INFO 31136 --- [mreview] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-22T08:51:48.631+09:00  WARN 31136 --- [mreview] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-22T08:51:49.116+09:00  INFO 31136 --- [mreview] [    Test worker] o.z.m.repository.MemberRepositoryTests   : Started MemberRepositoryTests in 2.834 seconds (process running for 3.45)
+Hibernate: 
+    delete r1_0 
+    from
+        review r1_0 
+    where
+        r1_0.member_mid=?
+Hibernate: 
+    select
+        m1_0.mid,
+        m1_0.email,
+        m1_0.moddate,
+        m1_0.nickname,
+        m1_0.pw,
+        m1_0.regdate 
+    from
+        m_member m1_0 
+    where
+        m1_0.mid=?
+Hibernate: 
+    delete 
+    from
+        m_member 
+    where
+        mid=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
