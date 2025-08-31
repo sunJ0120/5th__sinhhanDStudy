@@ -3,6 +3,7 @@ package sunj.be.domain.user;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.log4j.Log4j2;
+import sunj.be.domain.BaseTime;
 import sunj.be.domain.diary.Diary;
 import sunj.be.domain.emotion.Emotion;
 
@@ -17,7 +18,7 @@ import java.util.List;
 @Log4j2
 @NoArgsConstructor(access = AccessLevel.PROTECTED) //JPA가 프록시 생성할때 안전하게 생성 가능하다.
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class User {
+public class User extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,6 +35,7 @@ public class User {
     @OneToMany(mappedBy = "user",
                 cascade = CascadeType.ALL, // PERSIST, MERGE, REMOVE 등 전파 하도록 구성
                 orphanRemoval = true) // 컬렉션에서 빠진 Diary는 고아로 간주되어 삭제
+    @Builder.Default //컬렉션 필드는 필드 초기화만으로는 안 되고 반드시 @Builder.Default가 필요하다.
     private List<Diary> diaryList = new ArrayList<>();
 
     /*
@@ -63,8 +65,8 @@ public class User {
 
     - writeDiary : setter 사용을 막아두기 위해 user에 다이어리 생성 기능을 추가한다.
      */
-    public Diary writeDiary(LocalDateTime date, String content, Emotion emotion) {
-        Diary diary = Diary.create(this, date, emotion, content);
+    public Diary writeDiary(String content, Emotion emotion) {
+        Diary diary = Diary.create(this, emotion, content);
         this.diaryList.add(diary);
         return diary;
     }
