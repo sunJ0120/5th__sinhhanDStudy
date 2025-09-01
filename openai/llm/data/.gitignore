@@ -1,0 +1,47 @@
+# -------------------------
+# Python 기본
+# -------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 가상환경 (venv)
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+
+# 빌드/배포 산출물
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter Notebook 체크포인트
+.ipynb_checkpoints
+
+# IDE/에디터 관련
+.vscode/
+.idea/
+
+# -------------------------
+# FastAPI / 실행 로그
+# -------------------------
+*.log
+*.db
+*.sqlite3
+uvicorn.log
+
+# -------------------------
+# 환경변수 / 보안파일
+# -------------------------
+.env
+*.secret
+*.key
+
+# -------------------------
+# OS 파일
+# -------------------------
+.DS_Store
+Thumbs.db
