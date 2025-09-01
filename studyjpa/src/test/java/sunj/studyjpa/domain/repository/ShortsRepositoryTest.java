@@ -1,11 +1,12 @@
 package sunj.studyjpa.domain.repository;
 
-import org.assertj.core.util.Arrays;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import sunj.studyjpa.domain.dto.ShortsResponseDto;
 import sunj.studyjpa.domain.entity.Customer;
 import sunj.studyjpa.domain.entity.Shorts;
@@ -15,6 +16,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Transactional
+@Commit
 @SpringBootTest
 class ShortsRepositoryTest {
 
