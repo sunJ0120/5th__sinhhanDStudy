@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "shorts")
 @Builder
@@ -23,10 +25,10 @@ public class Shorts {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 100)
     private String shortsName;
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 100)
     private String videoName;
 
     @Column(nullable = false, length = 150)
@@ -40,6 +42,10 @@ public class Shorts {
         if (this.customer != null) {
             throw new IllegalStateException("이미 고객이 지정된 Shorts입니다.");
         }
+
+        // 1) 주인(FK) 쪽 먼저 세팅
+        this.customer = Objects.requireNonNull(customer, "customer must not be null");
+
         //반대편에 연관관계 맺어준다.
         if (!customer.getShortsList().contains(this)) {
             customer.getShortsList().add(this);

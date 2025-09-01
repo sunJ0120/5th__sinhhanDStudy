@@ -25,7 +25,8 @@ public class Customer {
 
     //이번 예제에서는 customer와 shorts를 양방향 매핑으로 구현한다.
     @OneToMany(mappedBy = "customer")
-    private List<Shorts> shortsList;
+    @Builder.Default                // 빌더가 기본값을 유지하도록
+    private List<Shorts> shortsList = new ArrayList<>();  // 컬렉션 즉시 초기화
 
     @Column(nullable = false, length = 10)
     String userId;
