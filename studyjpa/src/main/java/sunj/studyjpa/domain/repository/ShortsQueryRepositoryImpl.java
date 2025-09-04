@@ -4,10 +4,9 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import sunj.studyjpa.domain.dto.QShortsResponseDto;
-import sunj.studyjpa.domain.dto.ShortsResponseDto;
+import sunj.studyjpa.domain.dto.FilteredShortsResponse;
+import sunj.studyjpa.domain.dto.QFilteredShortsResponse;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static sunj.studyjpa.domain.entity.QShorts.shorts;
@@ -19,10 +18,10 @@ public class ShortsQueryRepositoryImpl implements ShortsQueryRepository {
     private final JPAQueryFactory query; //config 파일을 통해 바로 주입
 
     @Override
-    public List<ShortsResponseDto> searchShorts(String nickname, String keyword) {
+    public List<FilteredShortsResponse> searchShorts(String nickname, String keyword) {
         return query
                 .select(
-                        new QShortsResponseDto(
+                        new QFilteredShortsResponse(
                         shorts.id,
                         shorts.shortsName,
                         shorts.thumbnail
@@ -31,7 +30,7 @@ public class ShortsQueryRepositoryImpl implements ShortsQueryRepository {
                 .where(
                         nicknameEq(nickname),
                         keywordContains(keyword)
-                ).orderBy(shorts.shortsName.asc())
+                ).orderBy(shorts.shortsName.desc())
                 .fetch();
     }
 

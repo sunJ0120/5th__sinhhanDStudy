@@ -7,11 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
-import sunj.studyjpa.domain.dto.ShortsResponseDto;
+import sunj.studyjpa.domain.dto.FilteredShortsResponse;
+import sunj.studyjpa.domain.dto.ShortsResponse;
 import sunj.studyjpa.domain.entity.Customer;
+import sunj.studyjpa.domain.entity.Payment;
 import sunj.studyjpa.domain.entity.Shorts;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -78,7 +81,7 @@ class ShortsRepositoryTest {
         //given
 
         //when
-        List<ShortsResponseDto> found = shortsRepository.searchShorts("피용히", "다이소");
+        List<FilteredShortsResponse> found = shortsRepository.searchShorts("피용히", "다이소");
 
         //then
         Assertions.assertEquals(found.size(), 1); //하나의 검색 결과가 나올 것이다.
