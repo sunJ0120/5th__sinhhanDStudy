@@ -34,9 +34,11 @@ public class ShortsQueryRepositoryImpl implements ShortsQueryRepository {
                 .fetch();
     }
 
-
-
-
+    // --- 조건 메서드 (동적 쿼리) ---
+    // 조건 메서드끼리 조합해서 재사용도 가능하다. (모듈화가 잘 되어 있음)
+    private BooleanExpression nicknameEq(String nickname) {
+        return nickname != null ? shorts.customer.nickname.eq(nickname) : null;
+    }
 
     private BooleanExpression keywordContains(String keyword) {
         return keyword != null ? shorts.shortsName.containsIgnoreCase(keyword) : null;
