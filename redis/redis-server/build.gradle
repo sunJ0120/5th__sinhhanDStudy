@@ -46,6 +46,10 @@ dependencies {
     testImplementation "org.testcontainers:junit-jupiter"
     testImplementation "org.testcontainers:testcontainers"
     testImplementation "com.redis:testcontainers-redis:2.2.4"
+
+    //test 환경에서 Log4j2를 사용하기 위한 lombok 의존성 추가
+    testCompileOnly "org.projectlombok:lombok"
+    testAnnotationProcessor "org.projectlombok:lombok"
 }
 
 tasks.named('test') {
